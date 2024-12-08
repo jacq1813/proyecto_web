@@ -14,7 +14,6 @@ export const obtenerPersonal = async () => {
     }
 }
 
-
 export const encuentraPersonal = async (id: number) => {
     try {
         const identificador = { id: id }
