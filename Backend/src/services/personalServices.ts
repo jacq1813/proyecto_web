@@ -1,16 +1,8 @@
-import mysql from 'mysql2/promise';
 import { personalSchema } from '../schemas/personal.schema';
 import { Personal, PersonalNuevo } from '../typesPersonal';
 
 
-const conexion = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    database: 'proyecto',
-    port: 3306, // tuve que cambiar el puerto en mi caso a 3307 porque ya estaba ocupado el 3306
-    //xovxyw-keCnej-nawqy0
-    multipleStatements: false
-});
+const conexion = require('../conection/conec');
 
 export const obtenerPersonal = async () => {
     try {
