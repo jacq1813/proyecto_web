@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import personalRutas from './routes/personalRutas';
+import * as dotenv from 'dotenv';
 
 //creamos la app a traves del paquete express
 // y llamamos a su constructor
@@ -11,7 +12,7 @@ const app = express();
 //todo lo que se regresa al usuario es tipo JSON
 app.use(express.json());
 app.use(cors());
-
+dotenv.config();
 //puesto para escuchar la peticion del frontend
 const puerto = 3001;
 app.use('/api/personal', personalRutas);

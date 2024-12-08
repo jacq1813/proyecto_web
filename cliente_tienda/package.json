@@ -13,8 +13,10 @@
   "dependencies": {
     "@vee-validate/zod": "^4.14.7",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.7",
     "firebase": "^11.0.2",
     "jspdf-html2canvas": "^1.5.2",
+    "ts-node": "^10.9.2",
     "vue": "^3.5.12",
     "vue-json-excel3": "^1.0.29",
     "vue-router": "^4.4.5",
