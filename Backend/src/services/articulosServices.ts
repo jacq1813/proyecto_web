@@ -1,6 +1,6 @@
 import { ArticuloNuevo } from '../typesArticulos';
 
-const conexion = require('../database/conexion');
+const conexion = require('../conection/conec');
 
 export const obtenerArticulos = async () => {
     try {
