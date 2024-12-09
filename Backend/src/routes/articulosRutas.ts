@@ -10,8 +10,7 @@ router.get('/', async (_req: Request, res: Response) => {
 })
 
 router.get('/:id', async (req: Request, res: Response) => {
-    const { id } = req.params;
-    let articulo = await articulosServices.encuentraArticulo(Number(id));
+    let articulo = await articulosServices.encuentraArticulo(Number(req.params.id));
     res.send(articulo);
 })
 
