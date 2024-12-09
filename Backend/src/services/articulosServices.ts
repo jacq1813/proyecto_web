@@ -13,6 +13,23 @@ export const obtenerArticulos = async () => {
     }
 }
 
+export const encuentraArticulo = async (id: number) => {
+    try {
+        const identificador = { id: id }
+        const validacion = articulosSchema.safeParse(identificador);
+        if (!validacion.success) {
+            return {
+                error: validacion.error
+            }
+        }
+        const [results] = await conexion.query('SELECT * FROM articulos WHERE id = ? LIMIT 1', id);
+        return results;
+    }
+    catch (err) {
+        return { error: "No se puede encontrar el articulo" };
+    }
+}
+
 export const agregaArticulo = async (nuevo: ArticuloNuevo) => {
     try {
         const validacion = articulosSchema.safeParse(nuevo);

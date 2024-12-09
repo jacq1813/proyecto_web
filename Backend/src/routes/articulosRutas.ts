@@ -9,6 +9,12 @@ router.get('/', async (_req: Request, res: Response) => {
     res.send(articulos);
 })
 
+router.get('/:id', async (req: Request, res: Response) => {
+    const { id } = req.params;
+    let articulo = await articulosServices.encuentraArticulo(Number(id));
+    res.send(articulo);
+})
+
 // Insertar datos de articulos
 router.post('/', async (req: Request, res: Response) => {
     try {
