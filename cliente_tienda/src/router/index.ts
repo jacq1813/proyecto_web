@@ -11,6 +11,10 @@ import ArticulosVue from '@/modulos/articulos/vistas/ArticulosVue.vue'
 import ArticulosAgregarVue from '@/modulos/articulos/vistas/ArticulosAgregarVue.vue'
 import ArticulosEditarVue from '@/modulos/articulos/vistas/ArticulosEditarVue.vue'
 import ArticulosBorrarVue from '@/modulos/articulos/vistas/ArticulosBorrarVue.vue'
+import ClientesVue from '@/modulos/clientes/vistas/ClientesVue.vue'
+import ClientesAgregarVue from '@/modulos/clientes/vistas/ClientesAgregarVue.vue'
+import ClientesEditarVue from '@/modulos/clientes/vistas/ClientesEditarVue.vue'
+import ClientesBorrarVue from '@/modulos/clientes/vistas/ClientesBorrarVue.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,16 +42,43 @@ const router = createRouter({
       path: '/personal/agregar',
       name: 'personalagregar',
       component: PersonalAgregarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      }
     },
     {
       path: '/personal/:id/editar',
       name: 'personaleditar',
       component: PersonalEditarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
     },
     {
       path: '/personal/:id/borrar',
       name: 'personalborrar',
       component: PersonalBorrarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
     },
     {
       path: '/bienvenida',
@@ -68,21 +99,113 @@ const router = createRouter({
       path: '/articulos',
       name: 'articulos',
       component: ArticulosVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
     },
     {
       path: '/articulos/agregar',
       name: 'articulosagregar',
       component: ArticulosAgregarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
     },
     {
       path: '/articulos/:id/editar',
       name: 'articuloseditar',
       component: ArticulosEditarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
     },
     {
       path: '/articulos/:id/borrar',
       name: 'articulosborrar',
       component: ArticulosBorrarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/clientes',
+      name: 'clientes',
+      component: ClientesVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/clientes/agregar',
+      name: 'clientesagregar',
+      component: ClientesAgregarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      }
+    },
+    {
+      path: '/clientes/:id/editar',
+      name: 'clienteseditar',
+      component: ClientesEditarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/clientes/:id/borrar',
+      name: 'clientesborrar',
+      component: ClientesBorrarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
     },
   ],
 })

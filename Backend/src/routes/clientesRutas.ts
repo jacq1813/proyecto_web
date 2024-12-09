@@ -43,6 +43,7 @@ router.put('/', async (req: Request, res: Response) => {
 })
 
 // Eliminar datos
+//http://localhost:3001/api/clientes/1/borrar
 router.delete('/', async (req: Request, res: Response) => {
     try {
         const { id } = req.body;
