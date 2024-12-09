@@ -9,6 +9,13 @@ router.get('/', async (_req: Request, res: Response) => {
     res.send(clientes);
 })
 
+//http://localhost:3001/api/clientes/1
+router.get('/:id', async (req: Request, res: Response) => {
+    let cliente = await clientesServices.encuentraCliente(Number(req.params.id));
+    res.send(cliente);
+})
+    
+
 // Insertar datos de clientes
 router.post('/', async (req: Request, res: Response) => {
     try {
@@ -26,8 +33,8 @@ router.post('/', async (req: Request, res: Response) => {
 router.put('/', async (req: Request, res: Response) => {
     try {
 
-        const { nombre, direccion, telefono, correo_electronico, ciudad } = req.body;
-        const modificado = await clientesServices.modificarCliente({ nombre, direccion, telefono, correo_electronico, ciudad });
+        const { id, nombre, direccion, telefono, correo_electronico, ciudad } = req.body;
+        const modificado = await clientesServices.modificarCliente({ id, nombre, direccion, telefono, correo_electronico, ciudad});
         res.send(modificado);
 
     } catch (e) {

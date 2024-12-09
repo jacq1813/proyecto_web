@@ -1,5 +1,5 @@
 import { clienteSchema } from '../schemas/clientes.schema';
-import { ClienteNuevo } from '../typesClientes';
+import { Cliente, ClienteNuevo } from '../typesClientes';
 
 const conexion = require('../conection/conec');
 
@@ -10,6 +10,16 @@ export const obtenerClientes = async () => {
     }
     catch (err) {
         return { error: "No se puede obtener los clientes" };
+    }
+}
+
+export const encuentraCliente = async (id: number) => {
+    try {
+        const [results] = await conexion.query('SELECT * FROM clientes WHERE id = ?', id);
+        return results;
+    }
+    catch (err) {
+        return { error: "No se puede obtener el cliente" };
     }
 }
 
@@ -28,7 +38,7 @@ export const agregaCliente = async (nuevo: ClienteNuevo) => {
     }
 }
 
-export const modificarCliente = async (modificado: ClienteNuevo) => {
+export const modificarCliente = async (modificado: Cliente) => {
 
     try {
         const validacion = clienteSchema.safeParse(modificado);
@@ -36,7 +46,7 @@ export const modificarCliente = async (modificado: ClienteNuevo) => {
             return { error: validacion.error };
         }
         
-        const [results] = await conexion.query('UPDATE clientes SET nombre=?, direccion = ?, telefono = ?, correo_electronico = ?, ciudad = ? WHERE id = ?', [modificado.nombre, modificado.direccion, modificado.telefono, modificado.correo_electronico, modificado.ciudad]);
+        const [results] = await conexion.query('UPDATE clientes SET nombre=?, direccion = ?, telefono = ?, correo_electronico = ?, ciudad = ? WHERE id = ?', [modificado.nombre, modificado.direccion, modificado.telefono, modificado.correo_electronico, modificado.ciudad, modificado.id]);
         return results;
     }
     catch (err) {

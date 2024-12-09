@@ -32,8 +32,8 @@ router.post('/', async (req: Request, res: Response) => {
 router.put('/', async (req: Request, res: Response) => {
     try {
 
-        const { descripcion, precio, cantidad_almacen, fecha_caducidad } = req.body;
-        const modificado = await articulosServices.modificarArticulo({ descripcion, precio, cantidad_almacen, fecha_caducidad });
+        const { id, descripcion, precio, cantidad_almacen, fecha_caducidad } = req.body;
+        const modificado = await articulosServices.modificarArticulo({id, descripcion, precio, cantidad_almacen, fecha_caducidad });
         res.send(modificado);
 
     } catch (e) {

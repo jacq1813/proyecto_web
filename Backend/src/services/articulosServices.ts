@@ -1,5 +1,5 @@
 import { articulosSchema } from '../schemas/articulos.schema';
-import { ArticuloNuevo } from '../typesArticulos';
+import { Articulo, ArticuloNuevo } from '../typesArticulos';
 
 const conexion = require('../conection/conec');
 
@@ -44,7 +44,7 @@ export const agregaArticulo = async (nuevo: ArticuloNuevo) => {
     }
 }
 
-export const modificarArticulo = async (modificado: ArticuloNuevo) => {
+export const modificarArticulo = async (modificado: Articulo) => {
 
     try {
 
