@@ -5,19 +5,6 @@ const USER : string = process.env.USER_DB || 'root';
 const BD : string = process.env.DATABASE || 'proyecto';
 const PUERTO : number = parseInt(process.env.PORT || '3306');
 
-
-const testConnection = async () => {
-    try {
-        const connection = await conexion.getConnection();
-        console.log("Conexión exitosa a la base de datos");
-        connection.release(); // Liberar la conexión al pool.
-    } catch (error) {
-        console.error("Error al conectar a la base de datos:", error);
-    }
-};
-
-testConnection();
-
 const conexion = mysql.createPool({
     host: HOST,
     user: USER,
