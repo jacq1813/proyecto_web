@@ -53,7 +53,7 @@ export const modificarArticulo = async (modificado: ArticuloNuevo) => {
             return { error: validacion.error };
         }
         
-        const [results] = await conexion.query('UPDATE articulos SET nombre=?, precio = ?, cantidad = ?, estatus = ? WHERE id = ?', [modificado.descripcion, modificado.precio, modificado.cantidad_almacen, modificado.fecha_caducidad]);
+        const [results] = await conexion.query('UPDATE articulos SET nombre=?, precio = ?, cantidad = ?, estatus = ? WHERE id = ?', [modificado.descripcion, modificado.precio, modificado.cantidad_almacen, modificado.fecha_caducidad, modificado.id]);
         return results;
     }
     catch (err) {
