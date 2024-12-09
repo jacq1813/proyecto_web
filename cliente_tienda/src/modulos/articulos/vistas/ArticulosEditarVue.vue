@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         Fecha de caducidad
-                        <input type="text" class="form-control" v-model="articulos[0].fecha_caducidad">
+                        <input type="date" class="form-control" v-model="articulos[0].fecha_caducidad">
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary" @click="actualizarArticulo(articulos[0])">Actualizar</button>
