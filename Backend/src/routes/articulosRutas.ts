@@ -15,6 +15,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 })
 
 // Insertar datos de articulos
+//http://localhost:3001/api/articulos
 router.post('/', async (req: Request, res: Response) => {
     try {
         const { descripcion, precio, cantidad_almacen, fecha_caducidad } = req.body;

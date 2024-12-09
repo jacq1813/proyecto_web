@@ -36,7 +36,7 @@ export const agregaArticulo = async (nuevo: ArticuloNuevo) => {
         if (!validacion.success) {
             return { error: validacion.error };
         }
-        const [results] = await conexion.query('INSERT INTO articulos (nombre, precio, cantidad, estatus) VALUES (?, ?, ?, ?)', [nuevo.descripcion, nuevo.precio, nuevo.cantidad_almacen, nuevo.fecha_caducidad]);
+        const [results] = await conexion.query('INSERT INTO articulos (descripcion, precio, cantidad_almacen, fecha_caducidad) VALUES (?, ?, ?, ?)', [nuevo.descripcion, nuevo.precio, nuevo.cantidad_almacen, nuevo.fecha_caducidad]);
         return results;
     }
     catch (err) {
