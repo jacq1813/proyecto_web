@@ -15,6 +15,13 @@ export const obtenerClientes = async () => {
 
 export const encuentraCliente = async (id: number) => {
     try {
+        const identificador = { id: id }
+        const validacion = clienteSchema.safeParse(identificador);
+        if (!validacion.success) {
+            return {
+                error: validacion.error
+            }
+        }
         const [results] = await conexion.query('SELECT * FROM clientes WHERE id = ?', id);
         return results;
     }
