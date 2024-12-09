@@ -1,7 +1,7 @@
 require('dotenv').config();
 import mysql from 'mysql2/promise';
 const HOST : string = process.env.HOST || 'localhost';
-const USER : string = process.env.DB_USER || 'root';
+const USER : string = process.env.USER || 'root';
 const BD : string = process.env.DATABASE || 'proyecto';
 const PUERTO : number = parseInt(process.env.PORT || '3306');
 

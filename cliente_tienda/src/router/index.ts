@@ -7,6 +7,10 @@ import PersonalEditarVue from '@/modulos/personal/vistas/PersonalEditarVue.vue'
 import PersonalVue from '@/modulos/personal/vistas/PersonalVue.vue'
 import BienvenidaVue from '@/modulos/principal/vistas/BienvenidaVue.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import ArticulosVue from '@/modulos/articulos/vistas/ArticulosVue.vue'
+import ArticulosAgregarVue from '@/modulos/articulos/vistas/ArticulosAgregarVue.vue'
+import ArticulosEditarVue from '@/modulos/articulos/vistas/ArticulosEditarVue.vue'
+import ArticulosBorrarVue from '@/modulos/articulos/vistas/ArticulosBorrarVue.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +63,26 @@ const router = createRouter({
       path: '/validacion',
       name: 'validacion',
       component: SiginVue,
+    },
+    {
+      path: '/articulos',
+      name: 'articulos',
+      component: ArticulosVue,
+    },
+    {
+      path: '/articulos/agregar',
+      name: 'articulosagregar',
+      component: ArticulosAgregarVue,
+    },
+    {
+      path: '/articulos/:id/editar',
+      name: 'articuloseditar',
+      component: ArticulosEditarVue,
+    },
+    {
+      path: '/articulos/:id/borrar',
+      name: 'articulosborrar',
+      component: ArticulosBorrarVue,
     },
   ],
 })
