@@ -2,6 +2,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import articulosRutas from './routes/articulosRutas';
+import clientesRutas from './routes/clientesRutas';
 import personalRutas from './routes/personalRutas';
 
 //creamos la app a traves del paquete express
@@ -18,6 +19,7 @@ dotenv.config();
 const puerto = 3001;
 app.use('/api/personal', personalRutas);
 app.use('/api/articulos', articulosRutas);
+app.use('/api/clientes', clientesRutas);
 
 app.get('/hola', (_req, res) => { //Se declara "req", pero su valor no se lee nunca.
     let fecha = new Date().toLocaleDateString();

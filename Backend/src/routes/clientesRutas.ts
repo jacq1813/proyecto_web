@@ -52,3 +52,5 @@ router.delete('/', async (req: Request, res: Response) => {
         res.send({ error: "No se puede eliminar el cliente" });
     }
 })
+
+export default router;
