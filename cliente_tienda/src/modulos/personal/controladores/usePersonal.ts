@@ -1,6 +1,6 @@
 import { ref } from "vue"
-import type { Personal, PersonalAgregar } from "../interfaces/personal-interface"
 import personalApi from "../api/personalAPI"
+import type { Personal, PersonalAgregar } from "../interfaces/personal-interface"
 
 export const usePersonal = () => {
     const personal = ref<Personal[]>([])
