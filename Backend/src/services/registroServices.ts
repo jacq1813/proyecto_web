@@ -5,7 +5,7 @@ const conexion = require('../conection/conec');
 
 export const obtenerRegistros = async () => {
     try {
-        const [results] = await conexion.query('SELECT * FROM registros');
+        const [results] = await conexion.query('SELECT * FROM registro');
         return results;
     }
     catch (err) {
@@ -20,7 +20,7 @@ export const agregaRegistro = async (nuevo: RegistroNuevo) => {
         if (!validacion.success) {
             return { error: validacion.error };
         }
-        const [results] = await conexion.query('INSERT INTO registros (id_personal, fecha, hora) VALUES (?, ?, ?)', [nuevo.id_personal, nuevo.fecha, nuevo.hora]);
+        const [results] = await conexion.query('INSERT INTO registro (id_personal, fecha, hora) VALUES (?, ?, ?)', [nuevo.id_personal, nuevo.fecha, nuevo.hora]);
         return results;
     }
     catch (err) {

@@ -22,3 +22,5 @@ router.post('/', async (req: Request, res: Response) => {
         res.send({ error: "No se puede agregar el registro" });
     }
 })
+
+export default router;
