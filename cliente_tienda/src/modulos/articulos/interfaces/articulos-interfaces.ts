@@ -7,3 +7,5 @@ export interface Articulo {
 }
 
 export type ArticuloAgregar = Omit<Articulo, 'id'>;
+
+
