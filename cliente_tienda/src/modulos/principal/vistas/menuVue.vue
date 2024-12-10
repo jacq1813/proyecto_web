@@ -29,7 +29,7 @@
                         </li>
                         <li class="nav-item margin" id="item" v-if="usuarioAutenticado">
                             <button @click.prevent="cerrarSesion" class="link btn" id="btnSalir">
-                                Bye
+                                Salir
                             </button>
                         </li>
                     </ul>
@@ -74,41 +74,44 @@ const cerrarSesion = async () => {
     flex-flow: row wrap;
     justify-content: space-around;
 }
-#logo{
+
+#logo {
     background-color: #d8f8d9;
-    
+
 }
-#Tienda{
+
+#Tienda {
     font-size: 1.4em;
     font-family: 'Roboto', sans-serif;
     transition: 0.40s;
 }
-#Tienda:hover{
+
+#Tienda:hover {
     color: #4CAF50;
     transition: 0.25s;
 }
 
 
-#item{
+#item {
     font-size: 1.2em;
     font-family: 'Roboto', sans-serif;
     transition: 0.40s;
     margin: 0 10px;
 }
-.item:hover{
+
+.item:hover {
     color: #4CAF50;
     transition: 0.25s;
 }
 
-#btnSalir{
+#btnSalir {
     font-size: 1em;
     font-family: 'Roboto', sans-serif;
     transition: 0.40s;
     color: #fa453f;
 }
 
-#btnSalir:hover{
+#btnSalir:hover {
     color: #4e76c0;
     transition: 0.25s;
-}
-</style>
+}</style>
