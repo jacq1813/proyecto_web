@@ -1,10 +1,10 @@
 <template>
-    <div class="container mt-5" v-if="personal[0]"> 
+    <div class="container mt-5" v-if="personal[0]">
         <div class="card">
             <div class="card-header">
                 <h4>Borrar personal</h4>
             </div>
-            <div  class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" role="alert">
                 ¿Estas seguro de borrar el personal?
                 <i class="fa fa-warning"></i>
             </div>
@@ -39,9 +39,9 @@
 
 <script setup lang="ts">
 import { onMounted, watch } from 'vue';
-import { useRoute,useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { usePersonal } from '../controladores/usePersonal';
-const { traePersonalId,mensaje,personal,borrarPersonal } = usePersonal();
+const { traePersonalId, mensaje, personal, borrarPersonal } = usePersonal();
 
 let IdPersona = 0;
 //Para los parametros de la URL
@@ -52,16 +52,14 @@ const routeRedirect = useRouter();
 watch(
     () => mensaje.value,
     newId => {
-        routeRedirect.push({path:'/personal'});
+        routeRedirect.push({ path: '/personal' });
     }
 )
 
-onMounted(async() => {
+onMounted(async () => {
     IdPersona = Number(route.params.id);
     await traePersonalId(Number(IdPersona));
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

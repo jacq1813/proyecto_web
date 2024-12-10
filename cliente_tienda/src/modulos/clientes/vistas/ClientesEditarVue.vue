@@ -4,59 +4,75 @@
             <div class="card-header">
                 <h4>Editar cliente</h4>
             </div>
-            <div v-if="mensaje == 1" class="alert alert-succes" role="alert">
+            <div v-if="mensaje === 1" class="alert alert-success" role="alert">
                 Datos actualizados con éxito
             </div>
             <div class="card-body">
+                <Form :validation-schema="ClientesSchema" @submit="onTodoBien">
                     <div class="mb-3">
                         Id
-                        <input type="text" class="form-control" v-model="clientes[0].id" disabled>
+                        <Field name="id" type="text" class="form-control" :value="clientes[0].id" disabled />
                     </div>
                     <div class="mb-3">
                         Nombre
-                        <input type="text" class="form-control" v-model="clientes[0].nombre">
+                        <Field name="nombre" type="text" class="form-control" v-model="clientes[0].nombre" />
+                        <ErrorMessage name="nombre" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
                         Direccion
-                        <input type="text" class="form-control" v-model="clientes[0].direccion">
+                        <Field name="direccion" type="text" class="form-control" v-model="clientes[0].direccion" />
+                        <ErrorMessage name="direccion" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
-                        Telefono
-                        <input type="text" class="form-control" v-model="clientes[0].telefono">
+                        Teléfono
+                        <Field name="telefono" type="text" class="form-control" v-model="clientes[0].telefono" />
+                        <ErrorMessage name="telefono" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
-                        Correo electronico
-                        <input type="text" class="form-control" v-model="clientes[0].correo_electronico">
+                        Correo electrónico
+                        <Field name="correo_electronico" type="text" class="form-control"
+                            v-model="clientes[0].correo_electronico" />
+                        <ErrorMessage name="correo_electronico" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
                         Ciudad
-                        <input type="text" class="form-control" v-model="clientes[0].ciudad">
+                        <Field name="ciudad" type="text" class="form-control" v-model="clientes[0].ciudad" />
+                        <ErrorMessage name="ciudad" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
-                        <button class="btn btn-primary" @click="actualizarCliente(clientes[0])">Actualizar</button>
+                        <button class="btn btn-primary" type="submit">Actualizar</button>
                     </div>
-                </div>
+                </Form>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ErrorMessage, Field, Form } from 'vee-validate';
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useClientes } from '../controladores/useClientes';
-const { traeClientesId,mensaje,clientes,actualizarCliente } = useClientes();
-
 import { ClientesSchema } from '../schemas/ClientesSchema';
-import {Field,Form,ErrorMessage} from 'vee-validate';
+
+const { traeClientesId, mensaje, clientes, actualizarCliente } = useClientes();
 
 let IdCliente = 0;
 const route = useRoute();
-onMounted(async() => {
+
+onMounted(async () => {
     IdCliente = Number(route.params.id);
     await traeClientesId(IdCliente);
-})
+});
+
+const onTodoBien = async () => {
+    await actualizarCliente(clientes.value[0]);
+};
 </script>
 
 <style scoped>
-
+.errorValidacion {
+    color: red;
+    font-weight: bold;
+}
 </style>
