@@ -18,6 +18,8 @@ import PersonalVue from '@/modulos/personal/vistas/PersonalVue.vue'
 import BienvenidaVue from '@/modulos/principal/vistas/BienvenidaVue.vue'
 import RegistroAgregarVue from '@/modulos/registro/vistas/RegistroAgregarVue.vue'
 import RegistroVue from '@/modulos/registro/vistas/RegistroVue.vue'
+import VentasAgregarVue from '@/modulos/ventas/vistas/VentasAgregarVue.vue'
+import VentasVue from '@/modulos/ventas/vistas/VentasVue.vue'
 import { getAuth } from 'firebase/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -272,6 +274,34 @@ const router = createRouter({
       path: '/compras/:id/imprimir',
       name: 'comprasimprimir',
       component : CompraImprimirVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/ventas',
+      name: 'ventas',
+      component : VentasVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/ventas/agregar',
+      name: 'ventasagregar',
+      component : VentasAgregarVue,
       beforeEnter: (to, from, next) => {
         const auth = getAuth()
         const usuario = auth.currentUser
