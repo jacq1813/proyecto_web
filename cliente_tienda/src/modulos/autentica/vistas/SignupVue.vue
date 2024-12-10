@@ -1,13 +1,13 @@
 <template>
     <div class="contenedor">
         <form @submit.prevent="registrarUsuario" class="formulario">
-            <h2>Registro de usuario</h2>
+            <h2 class="h">Registro de usuario</h2>
             <div class="grupo">
-                <label>Correo:</label>
+                <label class="eti">Correo:</label>
                 <input type="email" required v-model="correo">
             </div>
             <div class="grupo">
-                <label>Contraseña:</label>
+                <label class="eti">Contraseña:</label>
                 <input type="password" required v-model="clave">
             </div>
             <div class="error" v-if="error">
@@ -52,42 +52,70 @@ const registrarUsuario = async () => {
     }
 }
 </script>
-
-<style scoped>
-.contenedor {
+<style>
+.eti{
+    font-size: 1.2em;
+    transition: 0.40s;
+}
+.eti:hover{
+    color: #4CAF50;
+    transition: 0.25s;
+}
+.contenedor{
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
 }
-
-.formulario {
+.formulario{
     display: flex;
     flex-direction: column;
     gap: 1em;
-}
+    border: 1px solid #DDD;
+    padding: 20px;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 10px auto;
+    width: 100%;
 
-.grupo {
+}
+.grupo{
     display: flex;
     flex: column;
-    gap: 05em;
+    gap: 0.5em;
+    justify-content: space-between;
 }
-
-input {
-    padding: 8px;
+.h{
+    text-align: center;
+    transition: 0.40s;
+}
+.h:hover{
+    color: #4CAF50;
+    transition: 0.25s;
+}
+input{
+    padding: 5px;
     border: 1px solid #DDD;
     border-radius: 5px;
+    transition: 0.5s;
 }
-
-button {
+input:hover{
+    border: 1px solid #4CAF50;
+    transition: 0.5s;
+}
+button{
     padding: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.5s;
 }
-
-.error {
+button:hover{
+    background-color: #45a049;
+    transition: 0.5s;
+}
+.error{
     color: red;
     font-size: 0.9em;
     margin-top: 0.5em;

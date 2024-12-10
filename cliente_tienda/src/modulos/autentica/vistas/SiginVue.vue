@@ -1,16 +1,16 @@
 <template>
     <div class="contenedor">
         <form @submit.prevent="entradaUsuario" class="formulario">
-            <h2>validacion de usuario</h2>
+            <h2>Verifica tu usuario</h2>
             <div class="grupo">
-                <label>Correo:</label>
+                <label class="eti">Correo:</label>
                 <input type="email" 
                     required
                     v-model="correo"
                 > 
             </div>
             <div class="grupo">
-                <label>Contraseña:</label>
+                <label class="eti">Contraseña:</label>
                 <input type="password" 
                     required
                     v-model="clave"
@@ -61,6 +61,14 @@ import '../../../firebase/config'
 </script>
 
 <style scoped>
+    .eti{
+        font-size: 1.2em;
+        transition: 0.40s;
+    }
+    .eti:hover{
+        color: #4CAF50;
+        transition: 0.25s;
+    }
     .contenedor{
         max-width: 400px;
         margin: 0 auto;
@@ -70,16 +78,29 @@ import '../../../firebase/config'
         display: flex;
         flex-direction: column;
         gap: 1em;
+        border: 1px solid #DDD;
+        padding: 20px;
+        border-radius: 5px;
+        justify-content: center;
+        margin: 10px auto;
+        width: 100%;
+
     }
     .grupo{
         display: flex;
         flex: column;
         gap: 0.5em;
+        justify-content: space-between;
     }
     input{
-        padding: 8px;
+        padding: 5px;
         border: 1px solid #DDD;
         border-radius: 5px;
+        transition: 0.5s;
+    }
+    input:hover{
+        border: 1px solid #4CAF50;
+        transition: 0.5s;
     }
     button{
         padding: 10px;
@@ -88,6 +109,19 @@ import '../../../firebase/config'
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        transition: 0.5s;
+    }
+    button:hover{
+        background-color: #45a049;
+        transition: 0.5s;
+    }
+    h2{
+        text-align: center;
+        transition: 0.40s;
+    }
+    h2:hover{
+        color: #4CAF50;
+        transition: 0.25s;
     }
     .error{
         color: red;
