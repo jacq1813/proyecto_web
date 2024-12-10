@@ -34,6 +34,7 @@
                 <th>Personal</th>
                 <th>Fecha</th>
                 <th>Hora</th>
+                <th>movimiento</th>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +46,7 @@
                 <td>{{ registro.id_personal }}</td>
                 <td>{{ registro.fecha }}</td>
                 <td>{{ registro.hora }}</td>
+                <td>{{ registro.movimiento }}</td>
                 <td class="centrado">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <button type="button" class="btn btn-sm btn-outline-primary">

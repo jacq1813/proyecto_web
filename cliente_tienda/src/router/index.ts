@@ -13,6 +13,7 @@ import PersonalBorrarVue from '@/modulos/personal/vistas/PersonalBorrarVue.vue'
 import PersonalEditarVue from '@/modulos/personal/vistas/PersonalEditarVue.vue'
 import PersonalVue from '@/modulos/personal/vistas/PersonalVue.vue'
 import BienvenidaVue from '@/modulos/principal/vistas/BienvenidaVue.vue'
+import RegistroAgregarVue from '@/modulos/registro/vistas/RegistroAgregarVue.vue'
 import RegistroVue from '@/modulos/registro/vistas/RegistroVue.vue'
 import { getAuth } from 'firebase/auth'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -222,6 +223,20 @@ const router = createRouter({
           }
         },
     },
+    {
+      path: '/registro/agregar',
+      name: 'registroagregar',
+      component : RegistroAgregarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    }
 
   ],
 })
