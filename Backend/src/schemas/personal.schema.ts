@@ -16,6 +16,7 @@ export const personalSchema = z.object({
     direccion: z.string().min(2).max(300),
     telefono: z.string().regex(telefonoRegEx),
     estatus: z.number().int().positive().min(1).max(2, "Los valores permitidos son 1 o 2")
+    
 }).refine(data => data.nombre == "TEC DE CULIACAN", {
     message: "La dirección debe ser TEC DE CULIACAN",
     path: ["direccion"]
