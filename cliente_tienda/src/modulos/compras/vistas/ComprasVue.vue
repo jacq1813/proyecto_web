@@ -16,7 +16,7 @@
             </button>
         </div>
     </section>
-    <table class="table table-stripped" id="tablaCompras">
+    <table class="table table-striped" id="tablaCompras">
         <caption><h3>Compras</h3></caption>
         <thead>
             <tr>
@@ -79,6 +79,12 @@ const imprimirComprasPDF =async () => {
 </script>
 
 <style scoped>
+    .botones{
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 600px;
+    }
+
     .centrado{
         text-align: center;
     }

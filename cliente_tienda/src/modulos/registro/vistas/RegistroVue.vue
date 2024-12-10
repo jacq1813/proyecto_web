@@ -4,7 +4,7 @@
         <h3>
             <!-- Articulos -->
         </h3>
-        <div>
+        <div class="botones">
             <RouterLink :to="{ path: '/registro/agregar' }">
                 <button class="btn btn-sm btn-outline-primary">
                     Agregar <i class="fa fa-plus>"></i>
@@ -34,7 +34,7 @@
                 <th>Personal</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>movimiento</th>
+                <th>Movimiento</th>
             </tr>
         </thead>
         <tbody>
@@ -135,14 +135,6 @@ td {
     font-size: 0.9em;
 }
 
-
-section {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
 .centrado {
     text-align: center;
 }
@@ -152,5 +144,6 @@ caption {
     text-align: center;
     padding-bottom: 10px;
     font-weight: bold;
+    color: black;
 }
 </style>

@@ -4,7 +4,7 @@
         <h3>
             <!-- Articulos -->
         </h3>
-        <div>
+        <div class="botones">
             <RouterLink :to="{ path: '/articulos/agregar' }">
                 <button class="btn btn-sm btn-outline-primary">
                     Agregar <i class="fa fa-plus>"></i>
@@ -87,70 +87,56 @@ const imprimirArticulosPDF = async () => {
 </script>
 
 <style scoped>
-.botones {
-    display: flex;
-    flex-flow: row wrap;
-    max-width: 600px
-}
+    .botones{
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 600px
+    }
+    .centrado{
+        text-align: center;
+        display: flex;
+        justify-content: center;
 
-#tablaArticulos {
-    width: 90%;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 2px 5px 5px #ccc;
-}
-
-button {
-    margin: 5px;
-    transition: all 0.3s;
-}
-
-button:hover {
-    transform: scale(1.1);
-    transition: all 0.3s;
-}
-
-section {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-
-tr {
-    text-align: center;
-    font-size: 1.2em;
-    transition: all 0.3s;
-}
-
-tr:hover {
-    background-color: #9afaa2;
-    transition: all 0.3s;
-}
-
-td {
-    padding: 2px;
-    font-size: 0.9em;
-}
-
-
-section {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.centrado {
-    text-align: center;
-}
-
-caption {
-    caption-side: top;
-    text-align: center;
-    padding-bottom: 10px;
-    font-weight: bold;
-}
+    }
+    #tablaArticulos{
+        width: 90%;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 5px 5px #ccc;
+    }
+    button{
+        margin: 5px;
+        transition: all 0.3s;
+    }
+    button:hover{
+        transform: scale(1.1);
+        transition: all 0.3s;
+    }
+    section{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    caption{
+        caption-side: top;
+        text-align: center;
+        padding-bottom: 10px;
+        font-weight: bold;
+        color: black;
+    }
+    tr{
+        text-align: center;
+        font-size: 1.2em;
+        transition: all 0.3s;
+    }
+    tr:hover{
+        background-color: #9afaa2;
+        transition: all 0.3s;
+    }
+    td{
+        padding: 2px;
+        font-size: 0.9em;
+    }
 </style>

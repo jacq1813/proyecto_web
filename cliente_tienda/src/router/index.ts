@@ -8,6 +8,7 @@ import ClientesAgregarVue from '@/modulos/clientes/vistas/ClientesAgregarVue.vue
 import ClientesBorrarVue from '@/modulos/clientes/vistas/ClientesBorrarVue.vue'
 import ClientesEditarVue from '@/modulos/clientes/vistas/ClientesEditarVue.vue'
 import ClientesVue from '@/modulos/clientes/vistas/ClientesVue.vue'
+import CompraImprimirVue from '@/modulos/compras/vistas/CompraImprimirVue.vue'
 import ComprasAgregarVue from '@/modulos/compras/vistas/ComprasAgregarVue.vue'
 import ComprasVue from '@/modulos/compras/vistas/ComprasVue.vue'
 import PersonalAgregarVue from '@/modulos/personal/vistas/PersonalAgregarVue.vue'
@@ -257,6 +258,20 @@ const router = createRouter({
       path: '/compras/agregar',
       name: 'comprasagregar',
       component : ComprasAgregarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/compras/:id/imprimir',
+      name: 'comprasimprimir',
+      component : CompraImprimirVue,
       beforeEnter: (to, from, next) => {
         const auth = getAuth()
         const usuario = auth.currentUser
