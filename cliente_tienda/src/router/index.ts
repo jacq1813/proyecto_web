@@ -8,6 +8,8 @@ import ClientesAgregarVue from '@/modulos/clientes/vistas/ClientesAgregarVue.vue
 import ClientesBorrarVue from '@/modulos/clientes/vistas/ClientesBorrarVue.vue'
 import ClientesEditarVue from '@/modulos/clientes/vistas/ClientesEditarVue.vue'
 import ClientesVue from '@/modulos/clientes/vistas/ClientesVue.vue'
+import ComprasAgregarVue from '@/modulos/compras/vistas/ComprasAgregarVue.vue'
+import ComprasVue from '@/modulos/compras/vistas/ComprasVue.vue'
 import PersonalAgregarVue from '@/modulos/personal/vistas/PersonalAgregarVue.vue'
 import PersonalBorrarVue from '@/modulos/personal/vistas/PersonalBorrarVue.vue'
 import PersonalEditarVue from '@/modulos/personal/vistas/PersonalEditarVue.vue'
@@ -236,7 +238,35 @@ const router = createRouter({
           next({ name: 'validacion' })
         }
       },
-    }
+    },
+    {
+      path: '/compras',
+      name: 'compras',
+      component : ComprasVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
+    {
+      path: '/compras/agregar',
+      name: 'comprasagregar',
+      component : ComprasAgregarVue,
+      beforeEnter: (to, from, next) => {
+        const auth = getAuth()
+        const usuario = auth.currentUser
+        if (usuario) {
+          next()
+        } else {
+          next({ name: 'validacion' })
+        }
+      },
+    },
 
   ],
 })

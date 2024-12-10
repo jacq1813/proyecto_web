@@ -31,10 +31,10 @@
         <thead>
             <tr>
                 <th>Clave</th>
-                <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
-                <th>Existencia</th>
+                <th>Cantidad almacen</th>
+                <th>Fecha Caducidad</th>
             </tr>
         </thead>
         <tbody>
