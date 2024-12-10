@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         Estatus
-                        <Field name="estatus" type="text" class="form-control" v-model="personal.estatus" />
+                        <Field name="estatus" type="number" class="form-control" v-model="personal.estatus" />
                         <ErrorMessage name="estatus" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
