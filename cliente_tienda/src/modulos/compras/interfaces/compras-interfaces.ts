@@ -6,7 +6,13 @@ export interface Compra {
     iva: number;
     subtotal: number;
     total: number;
-    fecha: string;
+    fecha_compra: string;
 }
-
-export type CompraAgregar = Omit<Compra, 'id'>;
+//que omita el id, el subtotal, total
+export interface CompraAgregar {
+    id_articulo: number;
+    cantidad: number;
+    precio: number;
+    iva: number;
+    fecha_compra: string;
+}

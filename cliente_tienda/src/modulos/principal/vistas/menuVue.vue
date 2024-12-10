@@ -22,7 +22,7 @@
                             <RouterLink class="nav-link item" to="/ventas">Ventas</RouterLink>
                         </li>
                         <li class="nav-item margin" id="item">
-                            <RouterLink class="nav-link item" to="/login">Compras</RouterLink>
+                            <RouterLink class="nav-link item" to="/compras">Compras</RouterLink>
                         </li>
                         <li class="nav-item margin" id="item">
                             <RouterLink class="nav-link item" to="/registro">Registro</RouterLink>

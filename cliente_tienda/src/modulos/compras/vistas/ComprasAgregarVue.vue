@@ -11,37 +11,27 @@
                 <Form :validation-schema="ComprasSchema" @submit="onTodoBien">
                     <div class="mb-3">
                         Clave Articulo
-                        <Field name="id_articulo" type="text" class="form-control" v-model="compra.id_articulo" />
+                        <Field name="id_articulo" type="number" class="form-control" v-model="compra.id_articulo" />
                         <ErrorMessage name="id_articulo" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
                         Cantidad
-                        <Field name="cantidad" type="text" class="form-control" v-model="compra.cantidad" />
+                        <Field name="cantidad" type="number" class="form-control" v-model="compra.cantidad" />
                         <ErrorMessage name="cantidad" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
                         Precio
-                        <Field name="precio" type="text" class="form-control" v-model="compra.precio" />
+                        <Field name="precio" type="number" class="form-control" v-model="compra.precio" />
                         <ErrorMessage name="precio" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
                         Iva
-                        <Field name="iva" type="text" class="form-control" v-model="compra.iva" />
+                        <Field name="iva" type="number" class="form-control" v-model="compra.iva" disabled />
                         <ErrorMessage name="iva" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
-                        Subtotal
-                        <Field name="subtotal" type="text" class="form-control" v-model="compra.subtotal" />
-                        <ErrorMessage name="subtotal" class="errorValidacion" />
-                    </div>
-                    <div class="mb-3">
-                        Total
-                        <Field name="total" type="text" class="form-control" v-model="compra.total" />
-                        <ErrorMessage name="total" class="errorValidacion" />
-                    </div>
-                    <div class="mb-3">
                         Fecha
-                        <Field name="fecha" type="text" class="form-control" v-model="compra.fecha" />
+                        <Field name="fecha" type="date" class="form-control" v-model="compra.fecha_compra" />
                         <ErrorMessage name="fecha" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
@@ -66,10 +56,8 @@ import {Field,Form,ErrorMessage} from 'vee-validate';
         id_articulo: 0,
         cantidad: 0,
         precio: 0,
-        iva: 0,
-        subtotal: 0,
-        total: 0,
-        fecha: ''
+        iva: 0.16,
+        fecha_compra: ''
     })
 
     const onTodoBien = async () => {

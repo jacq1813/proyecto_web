@@ -10,10 +10,11 @@ router.get('/', async (_req, res) => {
 })
 
 // Insertar datos de compras
+//http://localhost:3001/api/compras
 router.post('/', async (req, res) => {
     try {
-        const { id_articulo, id_cliente, cantidad, precio, iva, fecha_compra } = req.body;
-        const nueva = await comprasServices.realizaCompra({ id_articulo, id_cliente, cantidad, precio, iva, fecha_compra });
+        const { id_articulo, cantidad, precio, iva, fecha_compra } = req.body;
+        const nueva = await comprasServices.realizaCompra({ id_articulo, cantidad, precio, iva, fecha_compra });
         res.send(nueva);
     }
     catch (e) {

@@ -1,7 +1,6 @@
 export interface Compra {
     id: number;
     id_articulo: number;
-    id_cliente: number;
     cantidad: number;
     precio: number;
     iva: number;
@@ -12,7 +11,6 @@ export interface Compra {
 // OMITIR el campo 'id' de Compra, subtotal y total se calculan en base a cantidad y precio
 export interface CompraNueva {
     id_articulo: number;
-    id_cliente: number;
     cantidad: number;
     precio: number;
     iva: number;

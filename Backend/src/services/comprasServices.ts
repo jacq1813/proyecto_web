@@ -23,7 +23,7 @@ export const realizaCompra = async (nueva: CompraNueva) => {
         const subtotal = nueva.precio * nueva.cantidad;
         const total = subtotal * (1+nueva.iva);
         // debe insertar la compra en la base de datos y ademas debe actualizar la cantidad de articulos en la tabla articulos
-        const [results] = await conexion.query('INSERT INTO compras (id_articulo, id_cliente, cantidad, precio, iva, subtotal, total, fecha_compra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nueva.id_articulo, nueva.id_cliente, nueva.cantidad, nueva.precio, nueva.iva, subtotal, total, nueva.fecha_compra]);
+        const [results] = await conexion.query('INSERT INTO compras (id_articulo, cantidad, precio, iva, subtotal, total, fecha_compra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nueva.id_articulo, nueva.cantidad, nueva.precio, nueva.iva, subtotal, total, nueva.fecha_compra]);
 
         // Agregar la actualización de la cantidad de articulos en la tabla articulos
         const results2 = await conexion.query('SELECT cantidad_almacen FROM articulos WHERE id = ?', nueva.id_articulo);
