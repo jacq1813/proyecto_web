@@ -6,6 +6,7 @@ import clientesRutas from './routes/clientesRutas';
 import compraRutas from './routes/compraRutas';
 import personalRutas from './routes/personalRutas';
 import registroRutas from './routes/registroRutas';
+import ventasRutas from './routes/ventasRutas';
 
 //creamos la app a traves del paquete express
 // y llamamos a su constructor
@@ -24,6 +25,7 @@ app.use('/api/articulos', articulosRutas);
 app.use('/api/clientes', clientesRutas);
 app.use('/api/registro', registroRutas);
 app.use('/api/compras', compraRutas);
+app.use('/api/ventas', ventasRutas);
 
 app.get('/hola', (_req, res) => { //Se declara "req", pero su valor no se lee nunca.
     let fecha = new Date().toLocaleDateString();

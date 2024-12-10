@@ -23,6 +23,26 @@ export const encuentraVenta = async (id: number) => {
     }
 }
 
+export const ventasCliente = async (id: number) => {
+    try {
+        const [results] = await conexion.query('SELECT * FROM ventas WHERE id_cliente = ?', id);
+        return results;
+    }
+    catch (err) {
+        return { error: "No se puede obtener la venta" };
+    }
+}
+
+export const ventasArticulo = async (id: number) => {
+    try {
+        const [results] = await conexion.query('SELECT * FROM ventas WHERE id_articulo = ?', id);
+        return results;
+    }
+    catch (err) {
+        return { error: "No se puede obtener la venta" };
+    }
+}
+
 export const realizaVenta = async (nueva: VentaNueva) => {
     try {
         const validacion = ventaSchema.safeParse(nueva);
