@@ -6,5 +6,5 @@ export interface Registro {
     movimiento: string;
 }
 
-export type RegistroNuevo = Omit<Registro, 'id'> & { movimiento: 'entrada' | 'salida' };
+export type RegistroNuevo = Omit<Registro, 'id'>;
 

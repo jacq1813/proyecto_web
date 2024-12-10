@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import articulosRutas from './routes/articulosRutas';
 import clientesRutas from './routes/clientesRutas';
+import compraRutas from './routes/compraRutas';
 import personalRutas from './routes/personalRutas';
 import registroRutas from './routes/registroRutas';
 
@@ -22,6 +23,7 @@ app.use('/api/personal', personalRutas);
 app.use('/api/articulos', articulosRutas);
 app.use('/api/clientes', clientesRutas);
 app.use('/api/registro', registroRutas);
+app.use('/api/compras', compraRutas);
 
 app.get('/hola', (_req, res) => { //Se declara "req", pero su valor no se lee nunca.
     let fecha = new Date().toLocaleDateString();

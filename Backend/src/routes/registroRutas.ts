@@ -14,8 +14,8 @@ router.get('/', async (_req: Request, res: Response) => {
 // Insertar datos de registro
 router.post('/', async (req: Request, res: Response) => {
     try {
-        const { id_personal, fecha, hora } = req.body;
-        const nuevo = await registroServices.agregaRegistro({ id_personal, fecha, hora });
+        const { id_personal, fecha, hora, movimiento } = req.body;
+        const nuevo = await registroServices.agregaRegistro({ id_personal, fecha, hora, movimiento });
         res.send(nuevo);
     }
     catch (e) {
