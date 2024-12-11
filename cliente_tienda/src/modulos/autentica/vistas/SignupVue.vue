@@ -16,6 +16,9 @@
             <button type="submit">
                 Registrarse
             </button>
+            <p class="registro">
+                ¿Ya tienes una cuenta? <router-link to="/validacion">Inicia sesión aquí</router-link>
+            </p>
         </form>
     </div>
 </template>
@@ -52,21 +55,25 @@ const registrarUsuario = async () => {
     }
 }
 </script>
+
 <style>
-.eti{
+.eti {
     font-size: 1.2em;
     transition: 0.40s;
 }
-.eti:hover{
+
+.eti:hover {
     color: #4CAF50;
     transition: 0.25s;
 }
-.contenedor{
+
+.contenedor {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
 }
-.formulario{
+
+.formulario {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -76,33 +83,38 @@ const registrarUsuario = async () => {
     justify-content: center;
     margin: 10px auto;
     width: 100%;
-
 }
-.grupo{
+
+.grupo {
     display: flex;
     flex: column;
     gap: 0.5em;
     justify-content: space-between;
 }
-.h{
+
+.h {
     text-align: center;
     transition: 0.40s;
 }
-.h:hover{
+
+.h:hover {
     color: #4CAF50;
     transition: 0.25s;
 }
-input{
+
+input {
     padding: 5px;
     border: 1px solid #DDD;
     border-radius: 5px;
     transition: 0.5s;
 }
-input:hover{
+
+input:hover {
     border: 1px solid #4CAF50;
     transition: 0.5s;
 }
-button{
+
+button {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
@@ -111,13 +123,30 @@ button{
     cursor: pointer;
     transition: 0.5s;
 }
-button:hover{
+
+button:hover {
     background-color: #45a049;
     transition: 0.5s;
 }
-.error{
+
+.error {
     color: red;
     font-size: 0.9em;
     margin-top: 0.5em;
+}
+
+.registro {
+    text-align: center;
+    margin-top: 1em;
+    font-size: 1em;
+}
+
+.registro a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.registro a:hover {
+    text-decoration: underline;
 }
 </style>
