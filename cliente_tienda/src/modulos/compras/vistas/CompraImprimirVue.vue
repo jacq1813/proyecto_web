@@ -29,6 +29,14 @@
                     <input type="text" class="form-control" :value="compras[0].iva" disabled />
                 </div>
                 <div class="mb-3">
+                    Subtotal (sin IVA)
+                    <input type="text" class="form-control" :value="compras[0].subtotal" disabled />
+                </div>
+                <div class="mb-3">
+                    Total de la compra
+                    <input type="text" class="form-control" :value="compras[0].total" disabled />
+                </div>
+                <div class="mb-3">
                     Fecha de compra
                     <input type="text" class="form-control" :value="formatDate(compras[0].fecha_compra)" disabled />
                 </div>
