@@ -88,7 +88,7 @@
 
                     <!-- Botón Agregar -->
                     <div class="mb-3">
-                        <button class="btn btn-primary" type="submit">Agregar</button>
+                        <button class=" btn btn-primary" type="submit">Registrar venta</button>
                     </div>
                 </Form>
             </div>
@@ -131,7 +131,7 @@ const actualizarPrecio = () => {
     calcularIVA();
 };
 
-// Calcular IVA dinámicamente cuando cambian cantidad o precio
+// Calcular IVA cuando cambian cantidad o precio
 const calcularIVA = () => {
     iva.value = venta.value.cantidad * venta.value.precio * 0.16;
 };

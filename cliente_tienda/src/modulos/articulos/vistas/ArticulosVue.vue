@@ -33,8 +33,8 @@
                 <th>Clave</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
-                <th>Cantidad almacen</th>
-                <th>Fecha Caducidad</th>
+                <th>Cantidad en almacen</th>
+                <th>Fecha de caducidad</th>
             </tr>
         </thead>
         <tbody>
@@ -157,4 +157,5 @@ tr:hover {
 td {
     padding: 2px;
     font-size: 0.9em;
-}</style>
+}
+</style>

@@ -44,7 +44,7 @@
                 <td>{{ compra.iva }}</td>
                 <td>{{ compra.subtotal }}</td>
                 <td>{{ compra.total }}</td>
-                <td>{{ compra.fecha_compra }}</td>
+                <td>{{ formatDate(compra.fecha_compra) }}</td>
                 <td class="centrado">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <!-- un botones para imprimir por cada compra -->
@@ -68,6 +68,14 @@ const { traeCompras, compras } = useCompras();
 onMounted(() => {
     traeCompras();
 });
+
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');  // que el día tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0');  //  que el mes tenga dos dígitos
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+}
 
 const imprimirComprasPDF = async () => {
     let tabla = document.getElementById('tablaCompras');
@@ -140,4 +148,5 @@ tr:hover {
 td {
     padding: 2px;
     font-size: 0.9em;
-}</style>
+}
+</style>

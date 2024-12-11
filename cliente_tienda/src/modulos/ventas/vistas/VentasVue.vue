@@ -22,11 +22,11 @@
         </caption>
         <thead>
             <tr>
-                <th>Clave</th>
+                <th>Clave de venta</th>
                 <th>Clave Articulo</th>
                 <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Iva</th>
+                <th>Precio del producto</th>
+                <th>IVA</th>
                 <th>Subtotal</th>
                 <th>Total</th>
                 <th>Fecha venta</th>
