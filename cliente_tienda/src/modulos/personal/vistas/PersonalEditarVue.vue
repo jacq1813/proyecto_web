@@ -1,8 +1,12 @@
 <template>
     <div class="container mt-5" v-if="personal[0]">
         <div class="card">
-            <div class="card-header">
-                <h4>Editar personal</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>Agregar venta</h4>
+                <!-- Botón de Regresar -->
+                <button class="btn btn-secondary" @click="goBack">
+                    <i class="fa fa-arrow-left"></i> Regresar
+                </button>
             </div>
             <div v-if="mensaje == 1" class="alert alert-success" role="alert">
                 Datos actualizados con éxito
@@ -43,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router';
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { usePersonal } from '../controladores/usePersonal';
@@ -62,6 +67,11 @@ onMounted(async () => {
 const onTodoBien = async () => {
     await actualizarPersonal(personal.value[0]);
 };
+
+const goBack = () => {
+    router.go(-1);
+};
+
 </script>
 
 <style scoped>

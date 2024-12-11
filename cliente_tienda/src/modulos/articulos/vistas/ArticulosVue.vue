@@ -46,7 +46,7 @@
                 <td>{{ articulo.descripcion }}</td>
                 <td>{{ articulo.precio }}</td>
                 <td>{{ articulo.cantidad_almacen }}</td>
-                <td>{{ articulo.fecha_caducidad }}</td>
+                <td>{{ formatDate(articulo.fecha_caducidad) }}</td>
                 <td class="centrado">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <button type="button" class="btn btn-sm btn-outline-primary">
@@ -74,6 +74,16 @@ onMounted(async () => {
     await traeArticulos();
 })
 
+
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');  // que el día tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0');  //  que el mes tenga dos dígitos
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+}
+
+
 const imprimirArticulosPDF = async () => {
     let pagina = document.getElementById('tablaArticulos');
     await html2PDF(pagina, {
@@ -87,56 +97,64 @@ const imprimirArticulosPDF = async () => {
 </script>
 
 <style scoped>
-    .botones{
-        display: flex;
-        flex-flow: row wrap;
-        max-width: 600px
-    }
-    .centrado{
-        text-align: center;
-        display: flex;
-        justify-content: center;
+.botones {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 600px
+}
 
-    }
-    #tablaArticulos{
-        width: 90%;
-        margin: 0 auto;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 2px 5px 5px #ccc;
-    }
-    button{
-        margin: 5px;
-        transition: all 0.3s;
-    }
-    button:hover{
-        transform: scale(1.1);
-        transition: all 0.3s;
-    }
-    section{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        margin-top: 20px;
-    }
-    caption{
-        caption-side: top;
-        text-align: center;
-        padding-bottom: 10px;
-        font-weight: bold;
-        color: black;
-    }
-    tr{
-        text-align: center;
-        font-size: 1.2em;
-        transition: all 0.3s;
-    }
-    tr:hover{
-        background-color: #9afaa2;
-        transition: all 0.3s;
-    }
-    td{
-        padding: 2px;
-        font-size: 0.9em;
-    }
-</style>
+.centrado {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+#tablaArticulos {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px #ccc;
+}
+
+button {
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+caption {
+    caption-side: top;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+tr {
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 0.3s;
+}
+
+tr:hover {
+    background-color: #9afaa2;
+    transition: all 0.3s;
+}
+
+td {
+    padding: 2px;
+    font-size: 0.9em;
+}</style>

@@ -1,6 +1,6 @@
 import { ref } from "vue"
-import type { Articulo, ArticuloAgregar } from "../interfaces/articulos-interfaces"
 import articulosApi from "../api/articulosAPI"
+import type { Articulo, ArticuloAgregar } from "../interfaces/articulos-interfaces"
 
 export const useArticulos = () => {
     const articulos = ref<Articulo[]>([])

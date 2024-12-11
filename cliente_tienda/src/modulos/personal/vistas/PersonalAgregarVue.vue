@@ -1,8 +1,12 @@
 <template>
-    <div class="container mt-5"> 
+    <div class="container mt-5">
         <div class="card">
-            <div class="card-header">
-                <h4>Agregar personal</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>Agregar venta</h4>
+                <!-- Botón de Regresar -->
+                <button class="btn btn-secondary" @click="goBack">
+                    <i class="fa fa-arrow-left"></i> Regresar
+                </button>
             </div>
             <div v-if="mensaje == 1" class="alert alert-succes" role="alert">
                 Datos agregados con éxito
@@ -40,28 +44,33 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router';
+import { ErrorMessage, Field, Form } from 'vee-validate';
 import { ref } from 'vue';
-import type { PersonalAgregar } from '../interfaces/personal-interface';
 import { usePersonal } from '../controladores/usePersonal';
-
-const { agregarPersonal,mensaje } = usePersonal();
+import type { PersonalAgregar } from '../interfaces/personal-interface';
 import { PersonalSchema } from '../schemas/PersonalSchema';
-import {Field,Form,ErrorMessage} from 'vee-validate';
 
-    let personal = ref<PersonalAgregar>({
-        nombre: '',
-        direccion: '',
-        telefono: '',
-        estatus: 0
-    })
+const { agregarPersonal, mensaje } = usePersonal();
 
-    const onTodoBien = async () => {
-        await agregarPersonal(personal.value); //todo lo que este asignado con ref se accede con .value
-    }
+let personal = ref<PersonalAgregar>({
+    nombre: '',
+    direccion: '',
+    telefono: '',
+    estatus: 0
+})
+
+const onTodoBien = async () => {
+    await agregarPersonal(personal.value); //todo lo que este asignado con ref se accede con .value
+}
+
+const goBack = () => {
+    router.go(-1);
+}
 </script>
 
 <style scoped>
-.errorValidacion{
+.errorValidacion {
     color: red;
     font-weight: bold;
 }

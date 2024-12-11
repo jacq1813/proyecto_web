@@ -15,6 +15,5 @@ export interface VentaAgregar {
     id_cliente: number;
     cantidad: number;
     precio: number;
-    iva: number;
     fecha_venta: string;
 }

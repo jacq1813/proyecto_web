@@ -1,4 +1,4 @@
-import expres, {Request, Response} from 'express';
+import expres, { Request, Response } from 'express';
 import * as ventasServices from '../services/ventasServices';
 
 const router = expres.Router();
@@ -36,8 +36,8 @@ router.get('/:id/articulo', async (req: Request, res: Response) => {
 //http://localhost:3001/api/ventas
 router.post('/', async (req : Request, res:Response) => {
     try {
-        const { id_articulo, id_cliente, cantidad, precio, iva, fecha_venta } = req.body;
-        const nueva = await ventasServices.realizaVenta({ id_articulo, id_cliente, cantidad, precio, iva, fecha_venta });
+        const { id_articulo, id_cliente, cantidad, precio, fecha_venta } = req.body;
+        const nueva = await ventasServices.realizaVenta({ id_articulo, id_cliente, cantidad, precio, fecha_venta });
         res.send(nueva);
     }
     catch (e) {

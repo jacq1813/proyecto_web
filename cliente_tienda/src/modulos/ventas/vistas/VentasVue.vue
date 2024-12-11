@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="botones">
-            <RouterLink :to="{path:'/ventas/agregar'}">
+            <RouterLink :to="{ path: '/ventas/agregar' }">
                 <button class="btn btn-sm btn-outline-primary">
                     Agregar Venta <i class="fa fa-plus>"></i>
                 </button>
@@ -17,7 +17,9 @@
         </div>
     </section>
     <table class="table table-striped" id="tablaVentas">
-        <caption><h3>Ventas</h3></caption>
+        <caption>
+            <h3>Ventas</h3>
+        </caption>
         <thead>
             <tr>
                 <th>Clave</th>
@@ -42,12 +44,13 @@
                 <td>{{ venta.iva }}</td>
                 <td>{{ venta.subtotal }}</td>
                 <td>{{ venta.total }}</td>
-                <td>{{ venta.fecha_venta }}</td>
+                <td>{{ formatDate(venta.fecha_venta) }}</td>
                 <td class="centrado">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <!-- un botones para imprimir por cada venta -->
                         <button type="button" class="btn btn-sm btn-outline-primary">
-                            <RouterLink class="nav-link item" :to="{ path: '/ventas/' + venta.id + '/imprimir' }"><i class="fa fa-print"></i></RouterLink>
+                            <RouterLink class="nav-link item" :to="{ path: '/ventas/' + venta.id + '/imprimir' }"><i
+                                    class="fa fa-print"></i></RouterLink>
                         </button>
                     </div>
                 </td>
@@ -60,13 +63,22 @@
 import html2PDF from 'jspdf-html2canvas';
 import { onMounted } from 'vue';
 import { useVentas } from '../controladores/useVentas';
-const { traeVentas, ventas} = useVentas();
+const { traeVentas, ventas } = useVentas();
 
 onMounted(() => {
     traeVentas();
 });
 
-const imprimirVentasPDF =async () => {
+
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');  // que el día tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0');  //  que el mes tenga dos dígitos
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+}
+
+const imprimirVentasPDF = async () => {
     let tabla = document.getElementById('tablaVentas');
     await html2PDF(tabla, {
         jsPDF: {
@@ -80,55 +92,62 @@ const imprimirVentasPDF =async () => {
 </script>
 
 <style scoped>
-    .botones{
-        display: flex;
-        flex-flow: row wrap;
-        max-width: 600px;
-    }
+.botones {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 600px;
+}
 
-    .centrado{
-        text-align: center;
-    }
-    #tablaVentas{
-        width: 90%;
-        margin: 0 auto;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 2px 5px 5px #ccc;
-    }
-    button{
-        margin: 5px;
-        transition: all 0.3s;
-    }
-    button:hover{
-        transform: scale(1.1);
-        transition: all 0.3s;
-    }
-    section{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-end;
-        margin-top: 20px;
-        width: 90%;
-    }
-    caption{
-        caption-side: top;
-        text-align: center;
-        padding-bottom: 10px;
-        font-weight: bold;
-        color: black;
-    }
-    tr{
-        text-align: center;
-        font-size: 1.2em;
-        transition: all 0.3s;
-    }
-    tr:hover{
-        background-color: #9afaa2;
-        transition: all 0.3s;
-    }
-    td{
-        padding: 2px;
-        font-size: 0.9em;
-    }
-</style>
+.centrado {
+    text-align: center;
+}
+
+#tablaVentas {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px #ccc;
+}
+
+button {
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    margin-top: 20px;
+    width: 90%;
+}
+
+caption {
+    caption-side: top;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+tr {
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 0.3s;
+}
+
+tr:hover {
+    background-color: #9afaa2;
+    transition: all 0.3s;
+}
+
+td {
+    padding: 2px;
+    font-size: 0.9em;
+}</style>

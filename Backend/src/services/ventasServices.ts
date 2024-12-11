@@ -51,15 +51,29 @@ export const realizaVenta = async (nueva: VentaNueva) => {
             return { error: validacion.error };
         }
         const subtotal:number = nueva.precio * nueva.cantidad;
-        const total:number = subtotal * (1+nueva.iva);
-        // debe insertar la venta en la base de datos y ademas debe actualizar la cantidad de articulos en la tabla articulos
-        const [results] = await conexion.query('INSERT INTO ventas (id_articulo, id_cliente, cantidad, precio, iva, subtotal, total, fecha_venta) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nueva.id_articulo, nueva.id_cliente, nueva.cantidad, nueva.precio, nueva.iva, subtotal, total, nueva.fecha_venta]);
-        // Agregar la actualización de la cantidad de articulos en la tabla articulos
-        // const results2 = await conexion.query('SELECT cantidad_almacen FROM articulos WHERE id = ?', nueva.id_articulo);
-        // const cantidadActual = results2.cantidad_almacen;
-        // const cantidadNueva = cantidadActual - nueva.cantidad;
-        // await conexion.query('UPDATE articulos SET cantidad_almacen = ? WHERE id = ?', [cantidadNueva, nueva.id_articulo]);
+        const iva:number = subtotal * 0.16;
+        const total:number = subtotal * (1.16);
+        
+        const [results] = await conexion.query('INSERT INTO ventas (id_articulo, id_cliente, cantidad, precio, iva, subtotal, total, fecha_venta) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [nueva.id_articulo, nueva.id_cliente, nueva.cantidad, nueva.precio, iva, subtotal, total, nueva.fecha_venta]);
 
+         // Obtener la cantidad actual del artículo
+         const [articuloResult] = await conexion.query('SELECT cantidad_almacen FROM articulos WHERE id = ?', [nueva.id_articulo]);
+         if (!articuloResult || articuloResult.length === 0) {
+             throw new Error("El artículo no existe");
+         }
+ 
+         const cantidadActual: number = articuloResult[0].cantidad_almacen;
+ 
+         // Calcular la nueva cantidad
+         const cantidadNueva = cantidadActual - nueva.cantidad;
+ 
+         // Actualizar la cantidad en la tabla articulos solo si la cantidad actual es mayor o igual a la cantidad a vender
+            if(cantidadNueva >= 0){
+                await conexion.query('UPDATE articulos SET cantidad_almacen = ? WHERE id = ?', [cantidadNueva, nueva.id_articulo]);
+            }
+            else{
+                return { error: "No hay suficiente cantidad en el almacen" };
+            }
         return results;
     }
     catch (err) {

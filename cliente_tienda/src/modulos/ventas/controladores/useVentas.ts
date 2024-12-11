@@ -1,6 +1,6 @@
 import { ref } from "vue"
-import type { Venta, VentaAgregar } from "../interfaces/ventas-interfaces"
 import ventasApi from "../api/ventasAPI"
+import type { Venta, VentaAgregar } from "../interfaces/ventas-interfaces"
 
 export const useVentas = () => {
     const ventas = ref<Venta[]>([])
@@ -31,12 +31,14 @@ export const useVentas = () => {
     }
 
     const agregarVenta = async (venta: VentaAgregar) => {
+
         const respuesta = await ventasApi.post('/', venta)
+        console.log(respuesta.data)
         if(respuesta.data.affectedRows >= 1) {
+            console.log("aqui ya no entra")
             mensaje.value = 1
         }
     }
-
     return{
         ventas,
         traeVentas,

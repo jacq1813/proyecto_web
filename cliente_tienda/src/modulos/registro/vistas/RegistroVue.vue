@@ -44,21 +44,10 @@
             <tr v-else v-for="(registro, index) in registros" :key="registro.id">
                 <td>{{ registro.id }}</td>
                 <td>{{ registro.id_personal }}</td>
-                <td>{{ registro.fecha }}</td>
+                <td>{{ formatDate(registro.fecha) }}</td>
                 <td>{{ registro.hora }}</td>
                 <td>{{ registro.movimiento }}</td>
-                <td class="centrado">
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" class="btn btn-sm btn-outline-primary">
-                            <RouterLink class="nav-link item" :to="{ path: '/articulos/' + registro.id + '/editar' }"><i
-                                    class="fa fa-pencil"></i></RouterLink>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-outline-danger">
-                            <RouterLink class="nav-link item" :to="{ path: '/articulos/' + registro.id + '/borrar' }"><i
-                                    class="fa fa-trash"></i></RouterLink>
-                        </button>
-                    </div>
-                </td>
+
             </tr>
         </tbody>
     </table>
@@ -73,6 +62,14 @@ const { traeRegistros, registros } = useRegistro();
 onMounted(async () => {
     await traeRegistros();
 })
+
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');  // que el día tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0');  //  que el mes tenga dos dígitos
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+}
 
 const imprimirRegistrosPDF = async () => {
     let pagina = document.getElementById('tablaRegistros');

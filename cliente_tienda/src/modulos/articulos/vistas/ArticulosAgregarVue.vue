@@ -1,8 +1,12 @@
 <template>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-header">
-                <h4>Agregar articulo</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>Agregar venta</h4>
+                <!-- Botón de Regresar -->
+                <button class="btn btn-secondary" @click="goBack">
+                    <i class="fa fa-arrow-left"></i> Regresar
+                </button>
             </div>
             <div v-if="mensaje == 1" class="alert alert-succes" role="alert">
                 Datos agregados con éxito
@@ -21,7 +25,8 @@
                     </div>
                     <div class="mb-3">
                         Cantidad en almacen
-                        <Field name="cantidad_almacen" type="number" class="form-control" v-model="articulo.cantidad_almacen" />
+                        <Field name="cantidad_almacen" type="number" class="form-control"
+                            v-model="articulo.cantidad_almacen" />
                         <ErrorMessage name="cantidad_almacen" class="errorValidacion" />
                     </div>
                     <div class="mb-3">
@@ -40,29 +45,33 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router';
+import { ErrorMessage, Field, Form } from 'vee-validate';
 import { ref } from 'vue';
-import type { ArticuloAgregar } from '../interfaces/articulos-interfaces';
 import { useArticulos } from '../controladores/useArticulos';
-
-const { agregarArticulo,mensaje } = useArticulos();
+import type { ArticuloAgregar } from '../interfaces/articulos-interfaces';
 import { ArticulosSchema } from '../schemas/ArticulosSchema';
-import {Field,Form,ErrorMessage} from 'vee-validate';
 
-    let articulo = ref<ArticuloAgregar>({
-        descripcion: '',
-        precio: 0,
-        cantidad_almacen: 0,
-        fecha_caducidad: ''
-    })
+const { agregarArticulo, mensaje } = useArticulos();
 
-    const onTodoBien = async () => {
-        await agregarArticulo(articulo.value); //todo lo que este asignado con ref se accede con .value
-    }
+let articulo = ref<ArticuloAgregar>({
+    descripcion: '',
+    precio: 0,
+    cantidad_almacen: 0,
+    fecha_caducidad: ''
+})
 
+const onTodoBien = async () => {
+    await agregarArticulo(articulo.value); //todo lo que este asignado con ref se accede con .value
+}
+
+const goBack = () => {
+    router.go(-1);
+}
 </script>
 
 <style scoped>
-.errorValidacion{
+.errorValidacion {
     color: red;
     font-weight: bold;
 }
