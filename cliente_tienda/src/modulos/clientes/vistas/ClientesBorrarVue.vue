@@ -1,10 +1,14 @@
 <template>
     <div class="container mt-5" v-if="clientes[0]">
         <div class="card">
-            <div class="card-header">
-                <h4>Borrar cliente</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4>Eliminar cliente</h4>
+                <!-- Botón de Regresar -->
+                <button class="btn btn-secondary" @click="goBack">
+                    <i class="fa fa-arrow-left"></i> Regresar
+                </button>
             </div>
-            <div  class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" role="alert">
                 ¿Estas seguro de borrar el cliente?
                 <i class="fa fa-warning"></i>
             </div>
@@ -42,10 +46,11 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router';
 import { onMounted, watch } from 'vue';
-import { useRoute,useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useClientes } from '../controladores/useClientes';
-const { traeClientesId,mensaje,clientes,borrarCliente } = useClientes();
+const { traeClientesId, mensaje, clientes, borrarCliente } = useClientes();
 
 let IdCliente = 0;
 const route = useRoute();
@@ -54,16 +59,18 @@ const routeRedirect = useRouter();
 watch(
     () => mensaje.value,
     newId => {
-        routeRedirect.push({path:'/clientes'});
+        routeRedirect.push({ path: '/clientes' });
     }
 )
 
-onMounted(async() => {
+onMounted(async () => {
     IdCliente = Number(route.params.id);
     await traeClientesId(IdCliente);
 })
+
+const goBack = () => {
+    router.go(-1);
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -3,7 +3,7 @@
         <div class="botones">
             <RouterLink :to="{ path: '/ventas/agregar' }">
                 <button class="btn btn-sm btn-outline-primary">
-                    Agregar Venta <i class="fa fa-plus>"></i>
+                    Realizar venta <i class="fa fa-cart-plus"></i>
                 </button>
             </RouterLink>
             <button @click.prevent="imprimirVentasPDF" class="btn btn-sm btn-outline-primary" v-if="ventas.length > 0">
@@ -150,4 +150,5 @@ tr:hover {
 td {
     padding: 2px;
     font-size: 0.9em;
-}</style>
+}
+</style>

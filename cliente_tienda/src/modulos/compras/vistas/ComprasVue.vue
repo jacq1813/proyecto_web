@@ -1,9 +1,9 @@
 <template>
     <section>
         <div class="botones">
-            <RouterLink :to="{path:'/compras/agregar'}">
+            <RouterLink :to="{ path: '/compras/agregar' }">
                 <button class="btn btn-sm btn-outline-primary">
-                    Agregar Compra <i class="fa fa-plus>"></i>
+                    Realizar compra <i class="fa fa-plus"></i>
                 </button>
             </RouterLink>
             <button @click.prevent="imprimirComprasPDF" class="btn btn-sm btn-outline-primary" v-if="compras.length > 0">
@@ -17,7 +17,9 @@
         </div>
     </section>
     <table class="table table-striped" id="tablaCompras">
-        <caption><h3>Compras</h3></caption>
+        <caption>
+            <h3>Compras</h3>
+        </caption>
         <thead>
             <tr>
                 <th>Clave</th>
@@ -47,7 +49,8 @@
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <!-- un botones para imprimir por cada compra -->
                         <button type="button" class="btn btn-sm btn-outline-primary">
-                            <RouterLink class="nav-link item" :to="{ path: '/compras/' + compra.id + '/imprimir' }"><i class="fa fa-print"></i></RouterLink>
+                            <RouterLink class="nav-link item" :to="{ path: '/compras/' + compra.id + '/imprimir' }"><i
+                                    class="fa fa-print"></i></RouterLink>
                         </button>
                     </div>
                 </td>
@@ -66,7 +69,7 @@ onMounted(() => {
     traeCompras();
 });
 
-const imprimirComprasPDF =async () => {
+const imprimirComprasPDF = async () => {
     let tabla = document.getElementById('tablaCompras');
     await html2PDF(tabla, {
         jsPDF: {
@@ -79,55 +82,62 @@ const imprimirComprasPDF =async () => {
 </script>
 
 <style scoped>
-    .botones{
-        display: flex;
-        flex-flow: row wrap;
-        max-width: 600px;
-    }
+.botones {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 600px;
+}
 
-    .centrado{
-        text-align: center;
-    }
-    #tablaCompras{
-        width: 90%;
-        margin: 0 auto;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 2px 5px 5px #ccc;
-    }
-    button{
-        margin: 5px;
-        transition: all 0.3s;
-    }
-    button:hover{
-        transform: scale(1.1);
-        transition: all 0.3s;
-    }
-    section{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-end;
-        margin-top: 20px;
-        width: 90%;
-    }
-    caption{
-        caption-side: top;
-        text-align: center;
-        padding-bottom: 10px;
-        font-weight: bold;
-        color: black;
-    }
-    tr{
-        text-align: center;
-        font-size: 1.2em;
-        transition: all 0.3s;
-    }
-    tr:hover{
-        background-color: #9afaa2;
-        transition: all 0.3s;
-    }
-    td{
-        padding: 2px;
-        font-size: 0.9em;
-    }
-</style>
+.centrado {
+    text-align: center;
+}
+
+#tablaCompras {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px #ccc;
+}
+
+button {
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    margin-top: 20px;
+    width: 90%;
+}
+
+caption {
+    caption-side: top;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+tr {
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 0.3s;
+}
+
+tr:hover {
+    background-color: #9afaa2;
+    transition: all 0.3s;
+}
+
+td {
+    padding: 2px;
+    font-size: 0.9em;
+}</style>

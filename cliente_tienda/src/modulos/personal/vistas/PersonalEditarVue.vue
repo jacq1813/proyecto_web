@@ -2,7 +2,7 @@
     <div class="container mt-5" v-if="personal[0]">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h4>Agregar venta</h4>
+                <h4>Editar datos del empleado</h4>
                 <!-- Botón de Regresar -->
                 <button class="btn btn-secondary" @click="goBack">
                     <i class="fa fa-arrow-left"></i> Regresar
